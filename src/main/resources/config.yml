@@ -1,0 +1,22 @@
+# Default starting balance for new players
+starting-balance: 0.0
+
+# Currency symbol displayed in messages
+currency-symbol: "$"
+
+# Number of decimal places to show (0 = no decimals)
+decimal-places: 2
+
+# Number of players shown per page in /balancetop
+baltop-page-size: 10
+
+# Minimum amount allowed for /pay
+min-pay-amount: 0.01
+
+# Maximum amount allowed for /pay (0 = unlimited)
+max-pay-amount: 0.0
+
+# Diamond <-> Money exchange rate
+# 1 diamond = diamond-exchange-rate money
+# Example: 100.0 means 1 diamond = $100
+diamond-exchange-rate: 100.0

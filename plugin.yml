@@ -1,0 +1,46 @@
+name: money
+description: A simple economy plugin for musoyu.
+api-version: 26.1.2
+main: kr.kjh9211.money.MoneyPlugin
+version: 1.0.0
+commands:
+  money:
+    description: Check your balance or transfer money to another player.
+    usage: /money [player(need permission(money.check.others)) | add(need permission(money.add))|remove(need permission(money.remove))|set(need permission(money.set))] [amount]
+    aliases: [bal, balance]
+  pay:
+    description: Transfer money to another player.
+    usage: /pay <player> <amount>
+    aliases: [transfer]
+  balancetop:
+    description: View the top balances of players.
+    usage: /balancetop
+    aliases: [baltop]
+permissions:
+  money.check:
+    description: Allows players to check their balance.
+    default: true
+  money.check.others:
+    description: Allows players to check other players' balances.
+    default: false
+  money.pay:
+    description: Allows players to transfer money to others.
+    default: true
+  money.balancetop:
+    description: Allows players to view the top balances.
+    default: true
+  money.admin:
+    description: Allows players to manage the economy (add/remove/set balance).
+    default: op
+  money.add:
+    description: Allows players to add money to a player's balance.
+    default: false
+  money.remove:
+    description: Allows players to remove money from a player's balance.
+    default: false
+  money.set:
+    description: Allows players to set a player's balance.
+    default: false
+  money.use:
+    description: Allows players to use economy features.
+    default: true
