@@ -31,6 +31,7 @@ class EconomyManager(private val plugin: MoneyPlugin) {
         }
     }
 
+    @Synchronized
     fun getBalance(uuid: UUID): Double {
         connection.prepareStatement("SELECT balance FROM balances WHERE uuid = ?").use { stmt ->
             stmt.setString(1, uuid.toString())
@@ -41,6 +42,7 @@ class EconomyManager(private val plugin: MoneyPlugin) {
         }
     }
 
+    @Synchronized
     fun setBalance(uuid: UUID, amount: Double) {
         val clamped = maxOf(0.0, amount)
         connection.prepareStatement("""
@@ -53,9 +55,11 @@ class EconomyManager(private val plugin: MoneyPlugin) {
         }
     }
 
+    @Synchronized
     fun addBalance(uuid: UUID, amount: Double) =
         setBalance(uuid, getBalance(uuid) + amount)
 
+    @Synchronized
     fun removeBalance(uuid: UUID, amount: Double): Boolean {
         val current = getBalance(uuid)
         if (current < amount) return false
@@ -63,8 +67,10 @@ class EconomyManager(private val plugin: MoneyPlugin) {
         return true
     }
 
+    @Synchronized
     fun has(uuid: UUID, amount: Double) = getBalance(uuid) >= amount
 
+    @Synchronized
     fun getTopBalances(page: Int, pageSize: Int): List<Pair<UUID, Double>> {
         val offset = (page - 1) * pageSize
         connection.prepareStatement(
@@ -82,6 +88,7 @@ class EconomyManager(private val plugin: MoneyPlugin) {
         }
     }
 
+    @Synchronized
     fun getRank(uuid: UUID): Int {
         connection.prepareStatement(
             "SELECT COUNT(*) + 1 FROM balances WHERE balance > (SELECT COALESCE((SELECT balance FROM balances WHERE uuid = ?), 0))"
@@ -93,6 +100,7 @@ class EconomyManager(private val plugin: MoneyPlugin) {
         }
     }
 
+    @Synchronized
     fun getTotalPlayerCount(): Int {
         connection.createStatement().use { stmt ->
             stmt.executeQuery("SELECT COUNT(*) FROM balances").use { rs ->
