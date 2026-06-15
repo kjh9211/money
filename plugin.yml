@@ -2,7 +2,7 @@ name: money
 description: A simple economy plugin for musoyu.
 api-version: 26.1.2
 main: kr.kjh9211.money.MoneyPlugin
-version: 1.0.0
+version: 1.0.1
 commands:
   money:
     description: Check your balance or transfer money to another player.
