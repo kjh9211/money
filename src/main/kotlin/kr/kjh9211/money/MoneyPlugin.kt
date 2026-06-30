@@ -32,7 +32,7 @@ class MoneyPlugin : JavaPlugin() {
         }
 
         if (server.pluginManager.getPlugin("Vault") != null) {
-            server.servicesManager.register(Economy::class.java, VaultEconomy(this), this, ServicePriority.Normal)
+            server.servicesManager.register(Economy::class.java, VaultEconomy(this), this, ServicePriority.Highest)
             logger.info("Vault 연동 완료.")
         }
 
