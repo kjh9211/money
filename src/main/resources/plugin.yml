@@ -3,6 +3,7 @@ description: A simple economy plugin for musoyu.
 api-version: 26.1.2
 main: kr.kjh9211.money.MoneyPlugin
 softdepend: [PlaceholderAPI, Vault]
+load-before: [QuickShop-Hikari, QuickShop]
 version: ${version}
 commands:
   money:
